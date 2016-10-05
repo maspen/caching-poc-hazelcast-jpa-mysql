@@ -1,0 +1,5 @@
+com/intelligrated/poc/hazelcast/controller/Controller.class
+com/intelligrated/poc/hazelcast/Application.class
+com/intelligrated/poc/hazelcast/entity/Product.class
+com/intelligrated/poc/hazelcast/repository/ProductRepository.class
+com/intelligrated/poc/hazelcast/service/ProductService.class

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast
+    xsi:schemaLocation="http://www.hazelcast.com/schema/config http://www.hazelcast.com/schema/config/hazelcast-config-3.6.xsd"
+    xmlns="http://www.hazelcast.com/schema/config"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <!-- Cluster groupname and password -->
+    <group>
+        <name>bootifulcluster</name>
+        <password>bootiful-pass</password>
+    </group>
+    
+    <!-- Network configuration -->
+    <network>
+        <join>
+            <multicast enabled="true"/>
+            <!-- 
+            by default Hazelcast will use multicast for discovery, it can also be 
+            configured to only use TCP/IP for environments where multicast is not 
+            available or preferred
+             -->
+        </join>
+    </network>
+    
+    <!-- 
+         Short Term Cache Declaration 
+         Eviction policy in terms of seconds
+    -->
+    <cache name="shortTermCache">
+        <management-enabled>true</management-enabled>
+        <statistics-enabled>true</statistics-enabled>
+        <expiry-policy-factory>
+            <timed-expiry-policy-factory 
+                expiry-policy-type = "TOUCHED"
+                duration-amount = "15"
+                time-unit = "SECONDS" />
+        </expiry-policy-factory>
+    </cache>
+    
+    <!-- 
+         Long Term Cache Declaration 
+         Eviction policy in terms of minute(s)
+    -->
+    <cache name="longTermCache">
+        <management-enabled>true</management-enabled>
+        <statistics-enabled>true</statistics-enabled>
+        <expiry-policy-factory>
+            <timed-expiry-policy-factory 
+                expiry-policy-type = "TOUCHED"
+                duration-amount = "60"
+                time-unit = "SECONDS" />
+        </expiry-policy-factory>
+    </cache>
+</hazelcast>
